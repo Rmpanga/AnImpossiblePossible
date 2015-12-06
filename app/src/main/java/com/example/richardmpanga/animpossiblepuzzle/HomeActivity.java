@@ -9,15 +9,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.util.Log;
 
 public class HomeActivity extends AppCompatActivity {
 
+
+    private static final String TAG = HomeActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.d(TAG, "OnCreate: called");
 
     }
 
@@ -25,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
+        Log.d(TAG, "OnCreateOptionsMenu: called");
         return true;
     }
 
@@ -34,8 +39,8 @@ public class HomeActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
+        Log.d(TAG, "onOptionsItemsSelected: called");
+        //noinspection SimplifiableIfStatemenst
         if (id == R.id.action_settings) {
             return true;
         }
@@ -44,7 +49,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void playGame(View view){
+        Log.d(TAG, "playGame: called");
         Intent intent = new Intent(this, PuzzleActivity.class);
-        startActivity(intent);
+        Log.d(TAG, "playGame launching intent " + intent.toString());
+        this.startActivity(intent);
     }
 }
